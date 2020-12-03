@@ -38,7 +38,7 @@ RUN make install
 
 FROM ubuntu:20.04
 
-RUN apt update && apt install make chezscheme -y — no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install make chezscheme -y —-no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /root/.idris2
 
