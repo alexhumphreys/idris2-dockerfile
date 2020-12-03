@@ -1,0 +1,23 @@
+name: Docker Image CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        path: master  
+    - name: Checkout tools repo
+      uses: actions/checkout@v2
+      with:
+        repository:  idris-lang/Idris2
+        path: idris2
+        fetch-depth: 0
+    - name: Build the Docker image
+      run: |
+        cp master/Dockerfile idris2/
