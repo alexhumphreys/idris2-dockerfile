@@ -1,6 +1,6 @@
 FROM ubuntu:20.04 AS build
 
-RUN apt update && apt install gcc make chezscheme -y
+RUN apt-get update && apt-get install --yes gcc make chezscheme && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/idris2
 
@@ -38,7 +38,7 @@ RUN make install
 
 FROM ubuntu:20.04
 
-RUN apt update && apt install make chezscheme -y —-no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install --yes make chezscheme && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /root/.idris2
 
