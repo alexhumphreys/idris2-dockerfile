@@ -18,10 +18,17 @@ ADD bootstrap/ bootstrap/
 ADD libs/ libs/
 ADD tests/ tests/
 ADD Makefile .
+RUN true # https://github.com/moby/moby/issues/37965#issuecomment-426853382
+ADD bootstrap-rkt.sh .
+RUN true
 ADD README.md .
+RUN true
 ADD bootstrap.sh .
+RUN true
 ADD idris2.ipkg .
+RUN true
 ADD src/ src/
+RUN true
 
 ENV SCHEME=scheme
 
