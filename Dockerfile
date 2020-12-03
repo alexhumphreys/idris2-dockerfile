@@ -18,7 +18,6 @@ ADD bootstrap/ bootstrap/
 ADD libs/ libs/
 ADD tests/ tests/
 ADD Makefile .
-ADD bootstrap-rkt.sh .
 ADD README.md .
 ADD bootstrap.sh .
 ADD idris2.ipkg .
