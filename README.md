@@ -24,6 +24,8 @@ Since the container is built nightly, not every master commit will be built. It 
 
 If there's been no commits to master, the images are still rebuilt. I'm not sure if the docker image SHAs will remain the same, but if you pull say tag `:v0.2.1-247-g2e6aa12` twice and get different SHAs, that's probably what happened.
 
+The `idris2` binary in this image is the chez-scheme version.
+
 ## Usage
 
 ```
