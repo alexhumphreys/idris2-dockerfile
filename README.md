@@ -1,5 +1,7 @@
 # idris2-dockerfile
 
+![CI](https://github.com/alexhumphreys/idris2-dockerfile/workflows/Docker%20Image%20CI/badge.svg?branch=master&event=push)
+
 Nightly docker builds of master of idris2.
 
 ## Docker Image
