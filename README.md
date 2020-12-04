@@ -14,7 +14,7 @@ docker pull snazzybucket/idris2:latest
 
 The `latest` tag should be HEAD of master at https://github.com/idris-lang/Idris2.
 
-There is also docker tags in the `git describe` format, eg:
+There is also docker tags in the `[git describe](https://git-scm.com/docs/git-describe)` format, eg:
 
 ```
 docker pull snazzybucket/idris2:v0.2.1-247-g2e6aa12
