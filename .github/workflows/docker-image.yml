@@ -23,14 +23,14 @@ jobs:
         cp master/Dockerfile idris2/
         cd idris2/
         docker build . --file Dockerfile --tag snazzybucket/idris2:latest
-        docker tag snazzybucket/idris2:latest snazzybucket/idris2:$(git describe)
+        docker tag snazzybucket/idris2:latest snazzybucket/idris2:$(git describe --tags)
     - name: Login to DockerHub
-      uses: docker/login-action@v1 
+      uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Push the Docker image
       run: |
         cd idris2/
-        docker push snazzybucket/idris2:latest 
-        docker push snazzybucket/idris2:$(git describe)
+        docker push snazzybucket/idris2:latest
+        docker push snazzybucket/idris2:$(git describe --tags)
