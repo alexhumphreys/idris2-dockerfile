@@ -4,35 +4,12 @@ RUN apt-get update && apt-get install --yes gcc make chezscheme && rm -rf /var/l
 
 WORKDIR /opt/idris2
 
-ADD Makefile .
-ADD libs .
-ADD src .
-ADD support .
-
-ADD Release/ Release/
-ADD config.mk .
-ADD idris2api.ipkg .
-ADD support/ support/
-ADD LICENSE .
-ADD bootstrap/ bootstrap/
-ADD libs/ libs/
-ADD tests/ tests/
-ADD Makefile .
-RUN true # https://github.com/moby/moby/issues/37965#issuecomment-426853382
-ADD bootstrap-rkt.sh .
-RUN true
-ADD README.md .
-RUN true
-ADD bootstrap.sh .
-RUN true
-ADD idris2.ipkg .
-RUN true
-ADD src/ src/
+COPY . ./
 RUN true
 
 ENV SCHEME=scheme
 
-RUN make bootstrap-build
+RUN make bootstrap
 
 RUN make install
 
