@@ -6,6 +6,11 @@ on:
     - cron: "0 0 * * *"
 jobs:
   build:
+    strategy:
+      matrix:
+        image:
+          - idris2
+          - idris2api
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -16,14 +21,14 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository:  idris-lang/Idris2
-        path: idris2
+        path: Idris2
         fetch-depth: 0
     - name: Build the Docker image
       run: |
-        cp master/Dockerfile idris2/
-        cd idris2/
-        docker build . --file Dockerfile --tag snazzybucket/idris2:latest
-        docker tag snazzybucket/idris2:latest snazzybucket/idris2:$(git describe --tags)
+        cp master/${{ matrix.image }}.Dockerfile Idris2/
+        cd Idris2/
+        docker build . --file ${{ matrix.image }}.Dockerfile --tag snazzybucket/${{ matrix.image }}:latest
+        docker tag snazzybucket/${{ matrix.image }}:latest snazzybucket/${{ matrix.image }}:$(git describe --tags)
     - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
@@ -31,6 +36,6 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Push the Docker image
       run: |
-        cd idris2/
-        docker push snazzybucket/idris2:latest
-        docker push snazzybucket/idris2:$(git describe --tags)
+        cd Idris2/
+        docker push snazzybucket/${{ matrix.image }}:latest
+        docker push snazzybucket/${{ matrix.image }}:$(git describe --tags)
