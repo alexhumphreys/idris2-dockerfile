@@ -1,7 +1,7 @@
 name: Docker Image CI
 on:
   push:
-    branches: [ master ]
+    branches: [ '**' ]
   schedule:
     - cron: "0 0 * * *"
 jobs:
@@ -30,11 +30,13 @@ jobs:
         docker build . --file ${{ matrix.image }}.Dockerfile --tag snazzybucket/${{ matrix.image }}:latest
         docker tag snazzybucket/${{ matrix.image }}:latest snazzybucket/${{ matrix.image }}:$(git describe --tags)
     - name: Login to DockerHub
+      if: github.event.pull_request.base.ref == 'master'
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Push the Docker image
+      if: github.event.pull_request.base.ref == 'master'
       run: |
         cd Idris2/
         docker push snazzybucket/${{ matrix.image }}:latest
