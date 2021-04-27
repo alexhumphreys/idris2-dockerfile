@@ -30,6 +30,12 @@ There is also docker tags in the `[git describe --tags](https://git-scm.com/docs
 docker pull snazzybucket/idris2:v0.2.1-247-g2e6aa12
 ```
 
+This repo also includes a docker image with `idris2api` installed.
+
+```
+docker pull snazzybucket/idris2api:latest
+```
+
 ## Docker Image
 
 The image is hosted at https://hub.docker.com/r/snazzybucket/idris2, and is created from the [`Dockerfile` here](https://github.com/alexhumphreys/idris2-dockerfile).
@@ -39,3 +45,5 @@ Since the container is built nightly, not every master commit will be built. It 
 If there's been no commits to master, the images are still rebuilt. I'm not sure if the docker image SHAs will remain the same, but if you pull say tag `:v0.2.1-247-g2e6aa12` twice and get different SHAs, that's probably what happened.
 
 The `idris2` binary in this image is the chez-scheme version.
+
+The `idris2api` image is hosted here: https://hub.docker.com/r/snazzybucket/idris2api
