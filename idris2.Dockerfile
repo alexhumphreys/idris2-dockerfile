@@ -1,6 +1,6 @@
 FROM ubuntu:20.04 AS build
 
-RUN apt-get update && apt-get install --yes gcc make chezscheme && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install --yes gcc make chezscheme libgmp3-dev && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/idris2
 
