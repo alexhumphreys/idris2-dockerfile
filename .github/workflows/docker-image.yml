@@ -13,21 +13,21 @@ jobs:
           - idris2api
     runs-on: ubuntu-latest
     env:
-      PUSH_IMAGES: ${{ github.ref == 'refs/heads/master' }}
+      PUSH_IMAGES: ${{ github.ref == 'refs/heads/main' }}
     steps:
-    - name: Checkout
+    - name: Checkout this repo
       uses: actions/checkout@v2
       with:
-        path: master
-    - name: Checkout tools repo
+        path: main
+    - name: Checkout idris2 repo
       uses: actions/checkout@v2
       with:
         repository:  idris-lang/Idris2
         path: Idris2
         fetch-depth: 0
-    - name: Build the Docker image
+    - name: Build the ${{ matrix.image }} Docker image
       run: |
-        cp master/${{ matrix.image }}.Dockerfile Idris2/
+        cp main/${{ matrix.image }}.Dockerfile Idris2/
         cd Idris2/
         docker build . --file ${{ matrix.image }}.Dockerfile --tag snazzybucket/${{ matrix.image }}:latest
         docker tag snazzybucket/${{ matrix.image }}:latest snazzybucket/${{ matrix.image }}:$(git describe --tags)
@@ -37,7 +37,7 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: Push the Docker image
+    - name: Push the ${{ matrix.image }} Docker image
       if: ${{ env.PUSH_IMAGES }}
       run: |
         cd Idris2/
