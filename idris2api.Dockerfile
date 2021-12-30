@@ -10,6 +10,7 @@ RUN true
 ENV SCHEME=scheme
 
 RUN make bootstrap
+RUN make test
 
 RUN make install
 ENV PATH="/root/.idris2/bin:${PATH}"
