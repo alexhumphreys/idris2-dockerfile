@@ -64,7 +64,7 @@ jobs:
         git config --global user.email "<>"
 
     - name: commit and push README changes
-      if: ${{ env.PUSH_IMAGES }}
+      if: ${{ env.PUSH_IMAGES }} && matrix.image == 'idris2'
       run: |
         # Stage the file, commit and push
         cd main
@@ -73,7 +73,7 @@ jobs:
         dhall version
         cat README.dhall | dhall text > README.md
         git add README.md
-        git commit -m "[skip ci] Update docker tag in README.md"
+        git commit -m "[skip ci] Update docker tag in README.md" || true # this can fail when there's no changes
         git show
         git push origin main
         cd ../
