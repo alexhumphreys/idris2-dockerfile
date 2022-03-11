@@ -19,6 +19,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         path: main
+        fetch-depth: 0
 
     - name: Checkout idris2 repo
       uses: actions/checkout@v2
