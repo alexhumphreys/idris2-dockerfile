@@ -72,7 +72,7 @@ jobs:
         dhall version
         cat README.dhall | dhall text > README.md
         git add README.md
-        git commit -m "Update docker tag in README.md"
+        git commit -m "[skip ci] Update docker tag in README.md"
         git show
         git push origin main
         cd ../
