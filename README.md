@@ -28,7 +28,7 @@ Welcome to Idris 2.  Enjoy yourself!
 Main>
 ```
 
-There is also docker tags in the [`git describe --tags` (link to docs)](https://git-scm.com/docs/git-describe) format, eg:
+There is also docker tags in the `[git describe --tags](https://git-scm.com/docs/git-describe)` format, eg:
 
 ```
 docker pull snazzybucket/idris2:v0.5.1-341-g7a5f63ea
