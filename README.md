@@ -31,7 +31,7 @@ Main>
 There is also docker tags in the `[git describe --tags](https://git-scm.com/docs/git-describe)` format, eg:
 
 ```
-docker pull snazzybucket/idris2:v0.6.0-319-gf694e5e2f
+docker pull snazzybucket/idris2:v0.6.0-322-g46be3b808
 ```
 
 This repo also includes a docker image with `idris2api` installed.
@@ -46,7 +46,7 @@ The image is hosted at https://hub.docker.com/r/snazzybucket/idris2, and is crea
 
 Since the container is built nightly, not every master commit will be built. It should be possible to get a recent enough commit should you need one, and if there's a very recent change, it'll be at most 1 day till there's a docker image containing it.
 
-If there's been no commits to master, the images are still rebuilt. I'm not sure if the docker image SHAs will remain the same, but if you pull say tag `:v0.6.0-319-gf694e5e2f` twice and get different SHAs, that's probably what happened.
+If there's been no commits to master, the images are still rebuilt. I'm not sure if the docker image SHAs will remain the same, but if you pull say tag `:v0.6.0-322-g46be3b808` twice and get different SHAs, that's probably what happened.
 
 The `idris2` binary in this image is the chez-scheme version.
 
